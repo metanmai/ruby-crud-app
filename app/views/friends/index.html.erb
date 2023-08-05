@@ -1,0 +1,58 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Friends</h1>
+
+<div id="friends">
+  <%# @friends.each do |friend| %>
+    <%#= render friend %>
+<!--    <p>-->
+      <%#= link_to "Show this friend", friend %>
+<!--    </p>-->
+  <%# end %>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Show Friend Details</th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td><%= friend.first_name %></td>
+        <td><%= friend.last_name %></td>
+        <td><%= friend.email %></td>
+        <td><%= friend.phone %></td>
+        <td><%= link_to "Show Friend", friend_path(friend) %></td>
+<!--        <td>-->
+<!--          <select class="friend-actions">-->
+<!--            <option value="" selected disabled>Select Action</option>-->
+<!--            <option value="<%#= friend_path(friend) %>">View</option>-->
+<!--            <option value="<%#= edit_friend_path(friend) %>">Edit</option>-->
+<!--            <option value="<%#= friend_path(friend) %>" data-method="delete">Delete</option>-->
+<!--          </select>-->
+<!--        </td>-->
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="friendActionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="friendActionsDropdown">
+              <%= link_to 'View', friend_path(friend), class: 'dropdown-item' %>
+              <%= link_to 'Edit', edit_friend_path(friend), class: 'dropdown-item' %>
+              <%= button_to 'Delete', method: :delete, data: { confirm: 'Are you sure you want to delete this friend?' }, class: 'dropdown-item' %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= link_to "New friend", new_friend_path %>
+
+
