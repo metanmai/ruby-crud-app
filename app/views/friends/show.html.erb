@@ -1,10 +1,36 @@
 <p style="color: green"><%= notice %></p>
+<style>
+  .custom-jumbotron {
+    background-color: #343a40;
+    color: #ffffff;
+    border-radius: 50px;
+  }
 
-<%= render @friend %>
+  .custom-btn {
+    border-radius: 25px; /* Apply the same border radius to the buttons */
+  }
 
-<div>
-  <%= link_to "Edit this friend", edit_friend_path(@friend) %> |
-  <%= link_to "Back to friends", friends_path %>
+  .centered-buttons {
+    display: flex;
+    justify-content: center;
+  }
 
-  <%= button_to "Destroy this friend", @friend, method: :delete %>
+  .centered-div {
+    max-width: 200px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the div horizontally */
+  }
+</style>
+
+<div class="jumbotron custom-jumbotron">
+  <h1>I am, <%= @friend.first_name %> <%= @friend.last_name %>.</h1>
+  <p>Email: <a href="mailto:<%= @friend.email %>"><%= @friend.email %></a></p>
+    <p>Phone: <a href="tel:<%= @friend.phone %>">+91 <%= @friend.phone %></a></p>
+  <!-- Add more friend details as needed -->
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+
+<div class="centered-div">
+  <%= button_to "Edit this friend", edit_friend_path(@friend), method: :get, class: "btn btn-primary btn-block btn-sm mb-2 custom-btn" %>
+  <%= button_to "Back to friends", friends_path, method: :get, class: "btn btn-secondary btn-block btn-sm mb-2 custom-btn" %>
+  <%= button_to "Destroy this friend", @friend, method: :delete, class: "btn btn-danger btn-block btn-sm custom-btn", onclick: "return confirm('Are you sure you want to delete this friend?');" %>
 </div>
