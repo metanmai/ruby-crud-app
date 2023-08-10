@@ -28,8 +28,11 @@
         <td>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="friendActionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="visually-hidden">Actions</span>
-              <span class="iconify" data-icon="bi:three-dots-vertical"></span>
+              <span class="visually-hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+              </span>
             </button>
             <div class="dropdown-menu" aria-labelledby="friendActionsDropdown">
               <%= link_to 'View', friend_path(friend), class: 'dropdown-item' %>
